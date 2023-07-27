@@ -4,7 +4,8 @@ import { BadRequest, Forbidden } from "../utils/Errors.js"
 class CommentService {
 
   async createComment(commentData) {
-    const comment = (await dbContext.Comment.create(commentData)).populate('creator', 'name profile')
+    const comment = await dbContext.Comment.create(commentData)
+    await comment.populate('creator', 'name picture')
     return comment
   }
   async getCommentsByEventId(eventId) {
