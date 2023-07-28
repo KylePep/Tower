@@ -33,9 +33,11 @@
               <h2>{{ new Date(activeTowerEvent.startDate).getUTCDate() }} <span>{{ months[new
                 Date(activeTowerEvent.startDate).getMonth()] }}</span>
               </h2>
-              <!-- <h3> Starting at
-                {{ Math.floor(Math.random() * 10) }}
-              </h3> -->
+              <h3> Starting at
+                {{ new Date(activeTowerEvent.startDate).toLocaleTimeString("en-US", {
+                  hour: "2-digit", minute: "2-digit"
+                }) }}
+              </h3>
             </div>
           </section>
           <section class="row">

@@ -57,8 +57,8 @@
           <option value="sport">sport</option>
           <option value="digital">digital</option>
         </select>
-        <input v-model="editable.startDate" class="form-control mb-3" type="date" id="startDate" name="startDate"
-          placeholder="startDate" required>
+        <input v-model="editable.startDate" class="form-control mb-3" type="datetime-local" id="startDate"
+          name="startDate" placeholder="startDate" required>
         <textarea v-model="editable.description" class="form-control mb-3" name="description" id="description"
           placeholder="Description" cols="30" rows="5" required minlength="3" maxlength="1000"></textarea>
         <div class="d-flex justify-content-end">
