@@ -1,18 +1,18 @@
 <template>
-  <div class="stickyTop">
+  <div>
     <div v-if="!user.isAuthenticated"
-      class="text-light d-flex flex-row flex-md-column align-items-center justify-content-center text-center  fs-6 fs-lg-4">
-      <div @click="login" class="btn selectable text-light">
+      class="text-color-5 d-flex flex-row flex-md-column align-items-center justify-content-center text-center  fs-6 fs-lg-4">
+      <div @click="login" class="btn selectable text-color-5">
         Login
       </div>
       <router-link :to="{ name: 'Home' }">
-        <div class="btn selectable text-light text-center ">
+        <div class="btn selectable text-color-5 text-center ">
           HOME
         </div>
       </router-link>
     </div>
     <div v-else
-      class="text-light d-flex flex-row flex-md-column align-items-center justify-content-around text-center  fs-6 fs-lg-4">
+      class="text-color-5 d-flex flex-row flex-md-column align-items-center justify-content-around text-center  fs-6 fs-lg-4">
       <!-- <div class="dropdown my-2 my-lg-0"> -->
       <!-- <div type="button" class="bg-dark border-0 selectable no-select" data-bs-toggle="dropdown" aria-expanded="false"> -->
       <div v-if="account.picture || user.picture">
@@ -20,12 +20,12 @@
       </div>
       <!-- </div> -->
       <router-link :to="{ name: 'Home' }">
-        <div class="text-light selectable mt-3 mt-md-0 mb-3">
+        <div class="text-color-5 selectable mt-3 mt-md-0 mb-3">
           HOME
         </div>
       </router-link>
       <router-link :to="{ name: 'Account' }">
-        <div class="text-light selectable mt-3 mt-md-0 mb-3">
+        <div class="text-color-5 selectable mt-3 mt-md-0 mb-3">
           Account
         </div>
       </router-link>
@@ -33,7 +33,7 @@
           class="mdi mdi-plus-thick"></i>
         Event
       </div>
-      <div class="text-light selectable mt-3 mt-md-0 mb-3" @click="logout">
+      <div class="text-color-5 selectable mt-3 mt-md-0 mb-3" @click="logout">
         <i class="mdi mdi-logout"></i>
         logout
       </div>
@@ -72,11 +72,6 @@ export default {
     height: 8vh;
     width: 8vh;
 
-  }
-
-  .stickyTop {
-    position: sticky;
-    top: 0;
   }
 }
 

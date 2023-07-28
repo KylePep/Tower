@@ -1,6 +1,6 @@
 <template>
   <section class="row">
-    <div class="col-12 view-reserved d-flex flex-column justify-content-center fs-3 text-light">
+    <div class="col-12 view-reserved d-flex flex-column justify-content-center fs-3 text-color-5 text-shadow ps-5">
       <p>
         This is what Tower is all About
       </p>
@@ -12,15 +12,27 @@
       </p>
     </div>
   </section>
-  <div class="col-12 bg-primary  mb-3 py-3">
-    <div class="btn-group d-flex justify-content-around" role="group" aria-label="Basic outlined example">
-      <button @click="filterBy = ''" class="btn btn-outline-light px-5 py-3">All</button>
-      <!-- <button @click="filterBy = ''" class="btn btn-outline-light">Expos</button> -->
-      <button @click="filterBy = 'convention'" class="btn btn-outline-light">Conventions</button>
-      <!-- <button @click="filterBy = ''" class="btn btn-outline-light">Exhibits</button> -->
-      <button @click="filterBy = 'sport'" class="btn btn-outline-light">Sports</button>
-      <button @click="filterBy = 'digital'" class="btn btn-outline-light">Digital</button>
-      <button @click="filterBy = 'concert'" class="btn btn-outline-light">Concerts</button>
+  <!-- @media screen and (max-width: 768px) -->
+  <div v-if="screenWidth > 768" class="col-12 bg-color-3  mb-3 py-3">
+    <div class="btn-group d-flex justify-content-around pe-2" role="group">
+      <button @click="filterBy = ''" class="btn btn-outline-light text-color-5 px-5 py-3">All</button>
+      <button @click="filterBy = 'convention'" class="btn btn-outline-light text-color-5">Conventions</button>
+      <button @click="filterBy = 'sport'" class="btn btn-outline-light text-color-5">Sports</button>
+      <button @click="filterBy = 'digital'" class="btn btn-outline-light text-color-5">Digital</button>
+      <button @click="filterBy = 'concert'" class="btn btn-outline-light text-color-5">Concerts</button>
+    </div>
+  </div>
+  <div v-else class="col-12 bg-color-3 mb-3 py-3 pe-4">
+    <div class="btn-group d-flex justify-content-around" role="group">
+      <button @click="filterBy = ''" class="btn btn-outline-light text-color-5 px-5 py-3">All</button>
+    </div>
+    <div class="btn-group d-flex justify-content-around" role="group">
+      <button @click="filterBy = 'convention'" class="btn btn-outline-light text-color-5">Conventions</button>
+      <button @click="filterBy = 'sport'" class="btn btn-outline-light text-color-5">Sports</button>
+    </div>
+    <div class="btn-group d-flex justify-content-around" role="group">
+      <button @click="filterBy = 'digital'" class="btn btn-outline-light text-color-5">Digital</button>
+      <button @click="filterBy = 'concert'" class="btn btn-outline-light text-color-5">Concerts</button>
     </div>
   </div>
   <div v-for="event in events" :key="event.id" class="col-12 col-md-3 mb-3 pe-4 ">
@@ -57,6 +69,7 @@ export default {
 
     return {
       filterBy,
+      screenWidth: computed(() => window.screen.width),
       events: computed(() => {
         if (filterBy.value == '') {
           return AppState.events

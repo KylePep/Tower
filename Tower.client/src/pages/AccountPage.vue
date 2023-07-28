@@ -1,5 +1,5 @@
 <template>
-  <section class="row text-light fs-1">
+  <section class="row text-color-5 fs-1 fw-bold ps-3 py-3">
     My Events
     <div v-if="!myEvents">
       You have not created any events
@@ -10,30 +10,35 @@
       </div>
     </div>
   </section>
-  <section class="row text-light fs-1 fw-bold pb-3">
+  <section class="row text-color-5 fs-1 fw-bold pb-3">
     <div class="pb-3">
       Upcoming Events
     </div>
     <section class="row">
-      <div v-for="ticket in tickets" :key="ticket.id" class="col-12 col-md-7 m-auto pb-3 ">
-        <div class="row bg-dark rounded d-flex justify-content-between elevation-5">
-          <div class="col-12 col-md-4">
+      <div v-for="ticket in tickets" :key="ticket.id" class="col-12 col-md-7 m-auto pb-3 ps-4 pe-2 ">
+        <div class="row gradient-background rounded d-flex justify-content-between elevation-5">
+          <div class="col-6 col-md-4 ps-0 position-relative">
             <router-link :to="{ name: 'Events', params: { eventId: ticket.event.id } }">
-              <img :src="ticket.event.coverImg" class="img-fluid rounded-top " :alt="ticket.event.name">
+              <img :src="ticket.event.coverImg" class="img-fluid ticketImg" :alt="ticket.event.name">
             </router-link>
-          </div>
-          <div class="col-12 col-md-8">
-
-            <div class="fs-4 d-flex flex-column align-items-center">
-
-              {{ ticket.event.name }}
-              <div v-if="ticket.event.isCanceled == true" class="text-danger">
-                Canceled
+            <div v-if="ticket.event.isCanceled != false">
+              <div
+                class="d-flex text-black-50 fs-1 fw-bold position-absolute  cancelDisplay align-items-center justify-content-center px-5">
+                <div>
+                  Canceled
+                </div>
               </div>
             </div>
-            <div class="d-flex justify-content-end">
-              <button @click="removeTicket(ticket.id)" class="btn btn-danger mx-2 my-3">Unattend</button>
+          </div>
+          <div class="col-6 col-md-8 fs-4 d-flex flex-row justify-content-end align-items-center">
+
+            <div>
+              {{ ticket.event.name }}
             </div>
+
+            <!-- <div class="d-flex justify-content-end"> -->
+            <button @click="removeTicket(ticket.id)" class="btn btn-danger mx-2 my-3">Unattend</button>
+            <!-- </div> -->
           </div>
         </div>
       </div>
@@ -98,6 +103,21 @@ export default {
 
 <style scoped>
 img {}
+
+.cancelDisplay {
+  width: 100%;
+  height: 30%;
+  left: 0;
+  top: 35%;
+  background-color: rgba(255, 0, 0, 0.775);
+}
+
+.ticketImg {
+  height: 20vh;
+  width: 20vh;
+  object-fit: cover;
+  object-position: center;
+}
 
 .row,
 .col-12 {

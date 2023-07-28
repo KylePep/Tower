@@ -1,9 +1,9 @@
 <template>
-  <section class="row p-3 bg-light ">
-    <div class="col-3">
-      <img :src="commentProp.creator.picture" :alt="commentProp.creator.name">
+  <section class="row p-3 bg-light d-flex align-items-center ">
+    <div class="order-1 order-md-1 col-6 col-md-3">
+      <img class="avatar-img" :src="commentProp.creator.picture" :alt="commentProp.creator.name">
     </div>
-    <div class="col-7">
+    <div class="order-3 order-md-2 col-12 col-md-7 text-center">
       <div class="fs-3 fw-bold">
         {{ commentProp.creator.name }}
       </div>
@@ -11,7 +11,8 @@
         {{ commentProp.body }}
       </div>
     </div>
-    <div v-if="commentProp.creatorId == account.id" class="col-2 d-flex align-items-start justify-content-end">
+    <div v-if="commentProp.creatorId == account.id"
+      class="order-1 order-md-3 col-6 col-md-2 d-flex align-items-start justify-content-end">
       <button @click="deleteComment(commentProp.id)" class="btn btn-danger fs-6">
         Delete <i class="mdi mdi-close"></i>
       </button>
@@ -53,6 +54,22 @@ export default {
 
 
 <style lang="scss" scoped>
+@media screen and (min-width: 768px) {
+  .avatar-img {
+    height: 8vh;
+    width: 8vh;
+
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .avatar-img {
+    height: 7vh;
+    width: 7vh;
+
+  }
+}
+
 img {
   object-fit: cover;
   object-position: center;

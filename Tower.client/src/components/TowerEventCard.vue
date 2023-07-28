@@ -2,6 +2,14 @@
   <router-link :to="{ name: 'Events', params: { eventId: towerEventProp.id } }">
     <div class="card elevation-5 eventBg border border-5 border-light rounded-4"
       :style="`background-image: url(${towerEventProp.coverImg})`">
+      <div v-if="towerEventProp.isCanceled != false">
+        <div
+          class="d-flex text-black-50 fs-1 fw-bold position-absolute  cancelDisplay align-items-center justify-content-center px-5">
+          <div>
+            Canceled
+          </div>
+        </div>
+      </div>
       <div class="titleSpace p-3 ">
       </div>
       <!-- <img :src="towerEventProp.coverImg" class="card-img-top" :alt="towerEventProp.name"> -->
@@ -46,6 +54,14 @@ export default {
 <style lang="scss" scoped>
 .titleSpace {
   height: 30vh;
+}
+
+.cancelDisplay {
+  width: 100%;
+  height: 30%;
+  left: 0;
+  top: 25%;
+  background-color: rgba(255, 0, 0, 0.775);
 }
 
 .detailSpace {
