@@ -8,7 +8,7 @@
         This is what Tower does
       </p>
       <p>
-        This is why Tower does what it does
+        This is why Tower does what it does!
       </p>
     </div>
   </section>
